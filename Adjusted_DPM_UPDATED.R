@@ -43,10 +43,7 @@ plot(fit)
 ####Extract fits to data frames####
 posterior_samples <- extract(fit)
 cluster_assignments <- posterior_samples$cluster_assignments
-original_ids<-t(original_ids)
-colnames(cluster_assignments) <- original_ids
-final_cluster_assignments<- t(cluster_assignments)
-final_cluster_assignments<-data.frame(final_cluster_assignments)
+
 
 write.xlsx(final_cluster_assignments, file = "Final_20_cluster_assignments.xlsx", rowNames=TRUE)
 
@@ -70,8 +67,7 @@ prob_matrix2 <- as.matrix(cluster20_prob_sub[,-1])
 # Setting row names of the matrix to patient IDs
 rownames(prob_matrix) <- patient_ids
 rownames(prob_matrix2)< patient_ids2
-nrow(prob_matrix)
-nrow(patient_ids2)
+
 #####Heatmap Probabilities#########
 if (!requireNamespace("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
